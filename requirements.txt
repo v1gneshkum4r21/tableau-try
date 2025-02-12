@@ -7,3 +7,4 @@ langchain_openai
 crewai
 ollama
 transformers
+chromadb
