@@ -8,3 +8,4 @@ re
 langchain_openai
 crewai
 ollama
+transformers

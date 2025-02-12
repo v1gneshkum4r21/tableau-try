@@ -1,3 +1,5 @@
+from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from crewai import Crew, Agent, Task
 import streamlit as st
 import json
@@ -10,12 +12,16 @@ import re
 load_dotenv()
 
 # Initialize the LLM
-llm = ChatOpenAI(
-    model="huihui_ai/qwen2.5-1m-abliterated:14b",
+#llm = ChatOpenAI(
+    #model="huihui_ai/qwen2.5-1m-abliterated:14b",
     #model="qwen2.5-coder:14b",
-    openai_api_base="http://localhost:11434/v1",  
-    openai_api_key="NA"  
-)
+    #openai_api_base="http://localhost:11434/v1",  
+    #openai_api_key="NA"  
+#)
+# Initialize the LLM
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct-1M")
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-7B-Instruct-1M")
+llm = pipeline("text-generation", model=model, tokenizer=tokenizer)
 
 def load_input_file(file):
     """Load and parse input JSON file"""
