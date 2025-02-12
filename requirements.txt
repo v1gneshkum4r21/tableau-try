@@ -3,8 +3,6 @@ langchain
 openai
 python-dotenv
 uuid
-pathlib
-re
 langchain_openai
 crewai
 ollama
